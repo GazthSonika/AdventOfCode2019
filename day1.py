@@ -14,7 +14,7 @@ def B(mass):
 
 
 def main():
-    data = load('day1_a.txt')    
+    data = load('day1_a.txt')        
     print(
         "A", sum([A(int(d)) for d in data]),
         "\nB", sum([B(int(d)) for d in data])
