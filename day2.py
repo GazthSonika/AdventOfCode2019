@@ -1,4 +1,5 @@
 from utils import load
+from numba import njit, prange
 
 class A():
     def __init__(self, opcodes, idx=0):
@@ -6,16 +7,18 @@ class A():
         self.update_opcodes(12, 2)        
         self.idx = 0
 
+    
     def update_opcodes(self, a, b):
         self.opcodes[1] = a
         self.opcodes[2] = b
 
+    
     def op_1(self):
         i, o = self.idx, self.opcodes        
         o[o[i+3]] = o[o[i+1]] + o[o[i+2]]      
         self.idx += 4 
         return self
-
+    
     def op_2(self):
         i, o = self.idx, self.opcodes
         o[o[i+3]] = o[o[i+1]] * o[o[i+2]]       
@@ -25,6 +28,7 @@ class A():
     def op_99(self):
         return False
 
+    
     def run(self):                
         while self.opcodes[self.idx] != 99:            
             if self.opcodes[self.idx] == 1:
@@ -33,7 +37,6 @@ class A():
                 self.op_2()            
 
         return self.opcodes[0]
-
 
 
 def B(data, answer=19690720):            
@@ -46,7 +49,6 @@ def B(data, answer=19690720):
             return params
 
     return None    
-
 
 
 def main():
