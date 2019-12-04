@@ -14,7 +14,6 @@ def is_valid_B(number):
 def A(a, b):
     return sum(1 for x in range(a, b) if is_valid_A(x))
 
-
 def B(a, b):
     return sum(1 for x in range(a, b) if is_valid_B(x))
 
