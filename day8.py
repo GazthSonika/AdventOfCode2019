@@ -14,11 +14,10 @@ def find_color(layers, pos, layer):
     
 
 def A(data, size):
-    layers = split_layers(data, size)    
-    zc = sorted(
-        [l.flatten() for l in layers], 
-        key=lambda it: np.count_nonzero(it == 0))[0]    
+    flayers = [l.flatten() for l in split_layers(data, size)] 
+    zc = sorted(flayers, key=lambda it: np.count_nonzero(it == 0))[0]   
     return np.count_nonzero(zc == 1) * np.count_nonzero(zc == 2)    
+
 
 def B(data, size):    
     layers = split_layers(data, size)    
